@@ -1,8 +1,7 @@
 ﻿using Unity.Entities;
 using Unity.Mathematics;
 using Unity.Transforms;
-using UnityEngine;
-using System;
+
 public class PlayerMovementSystem : SystemBase
 {
     protected override void OnUpdate()
