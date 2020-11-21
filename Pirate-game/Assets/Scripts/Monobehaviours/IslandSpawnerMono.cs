@@ -11,8 +11,8 @@ public class IslandSpawnerMono : MonoBehaviour
     private int max_islands = 3;
     private int islands_count = 0;
 
-    private float min_spawn_time = 3;
-    private float max_spawn_time = 12;
+    private float min_spawn_time = 0;
+    private float max_spawn_time = 0.01f;
 
     private float spawntime = 0;
     private int nr_of_prefabs = 0;
@@ -46,12 +46,20 @@ public class IslandSpawnerMono : MonoBehaviour
     {
         int random_index = Random.Range(0, nr_of_prefabs);
         Debug.Log(random_index);
-        Instantiate(prefabs[random_index], new Vector3(0, 1, 0), Quaternion.identity);
+        Instantiate(prefabs[random_index], get_spawn_position(), Quaternion.identity);
     }
 
     float get_new_spawn_time()
     {
         return Random.Range(min_spawn_time, max_spawn_time);
+    }
+
+    Vector3 get_spawn_position()
+    {
+        float x = Random.Range(-22, 22);
+        float z = -x *1.59f;
+         Vector3 spawn_pos = new Vector3(x+40, 0, z+40);
+        return spawn_pos;
     }
         
 }
